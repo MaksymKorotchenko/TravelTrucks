@@ -1,0 +1,89 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 360px;
+}
+
+.locationWrapper {
+}
+
+.locationLabel {
+  line-height: 150%;
+  color: var(--gray);
+}
+
+.locationInput {
+  border-radius: 12px;
+  padding: 18px 218px 18px 20px;
+  width: 360px;
+  height: 56px;
+  background: var(--inputs);
+  font-size: 16px;
+}
+
+.filtersText {
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.filtersWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.equipmentLabel {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+}
+
+.equipmentWrapper::before {
+  content: "";
+  width: 100px;
+  height: 1px;
+  background-color: red;
+  color: red;
+  stroke: var(--gray-light);
+}
+
+.equipmentList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.equipmentItem {
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  width: 112px;
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+  span {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--main);
+    text-align: center;
+  }
+}
+
+.equipmentItem:hover {
+  border: 1px solid var(--button);
+}
+
+.typeLabel {
+}
+
+.typeWrapper {
+}
