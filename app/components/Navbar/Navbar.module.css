@@ -5,9 +5,6 @@
   max-width: 360px;
 }
 
-.locationWrapper {
-}
-
 .locationLabel {
   line-height: 150%;
   color: var(--gray);
@@ -40,15 +37,6 @@
   color: var(--main);
 }
 
-.equipmentWrapper::before {
-  content: "";
-  width: 100px;
-  height: 1px;
-  background-color: red;
-  color: red;
-  stroke: var(--gray-light);
-}
-
 .equipmentList {
   display: flex;
   flex-wrap: wrap;
@@ -69,6 +57,8 @@
   svg {
     width: 32px;
     height: 32px;
+    stroke: transparent;
+    fill: black;
   }
   span {
     font-weight: 500;
@@ -80,10 +70,4 @@
 
 .equipmentItem:hover {
   border: 1px solid var(--button);
-}
-
-.typeLabel {
-}
-
-.typeWrapper {
 }

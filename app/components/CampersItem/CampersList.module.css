@@ -1,0 +1,144 @@
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 888px;
+  margin-bottom: 40px;
+}
+
+.cardItem {
+  border: 1px solid var(--gray-light);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.cardWrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.imageWrapper {
+  display: flex;
+}
+
+.image {
+  border-radius: 10px;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  width: 50px;
+}
+
+.nameWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  svg {
+    width: 26;
+    height: 24px;
+    cursor: pointer;
+  }
+  svg:hover {
+    fill: var(--button-hover);
+  }
+}
+
+.title {
+  font-weight: 600;
+  line-height: 133%;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+}
+
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.starWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  svg {
+    fill: var(--rating);
+  }
+}
+
+.ratingLink {
+  text-decoration: underline;
+  line-height: 150%;
+}
+
+.ratingLink:hover {
+  text-decoration: none;
+}
+
+.locationWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 524px;
+  color: var(--text);
+}
+
+.categoryList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 100px;
+  padding: 12px 18px;
+  background: var(--badges);
+  user-select: none;
+}
+
+.loadButton {
+  letter-spacing: -0.01em;
+  color: var(--main);
+  border: 1px solid var(--gray-light);
+  background-color: transparent;
+}
+
+.loadButton:hover {
+  background-color: transparent;
+  border: 1px solid var(--button-hover);
+}

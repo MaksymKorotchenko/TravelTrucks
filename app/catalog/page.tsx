@@ -7,8 +7,8 @@ export default async function Catalog() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["campers", { page: 1 }],
-    queryFn: () => getCampers(1),
+    queryKey: ["campers", 1, 4, {}],
+    queryFn: () => getCampers(1, 4, {}),
   });
 
   return (

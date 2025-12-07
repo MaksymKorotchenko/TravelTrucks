@@ -1,6 +1,28 @@
 import css from "./Navbar.module.css";
 
-export default function Navbar() {
+interface NavbarProps {
+  selectFilters: () => void;
+  appendFilters: (name: string) => void;
+}
+
+export default function Navbar({ appendFilters, selectFilters }: NavbarProps) {
+  const categoryNames = [
+    "AC",
+    "automatic",
+    "kitchen",
+    "TV",
+    "bathroom",
+    "water",
+    "gas",
+    "radio",
+  ];
+
+  const formMap = {
+    Van: "panelTruck",
+    "Fully Integrated": "fullyIntegrated",
+    Alcove: "alcove",
+  };
+
   return (
     <aside className={css.navbar}>
       <div className={css.locationWrapper}>
@@ -20,36 +42,22 @@ export default function Navbar() {
         <hr />
         <fieldset className={css.equipmentWrapper}>
           <ul className={css.equipmentList}>
-            <li className={css.equipmentItem}>
-              <svg>
-                <use href="/sprite.svg#wind"></use>
-              </svg>
-              <span>AC</span>
-            </li>
-            <li className={css.equipmentItem}>
-              <svg>
-                <use href="/sprite.svg#diagram"></use>
-              </svg>
-              <span>Automatic</span>
-            </li>
-            <li className={css.equipmentItem}>
-              <svg>
-                <use href="/sprite.svg#cup"></use>
-              </svg>
-              <span>Kitchen</span>
-            </li>
-            <li className={css.equipmentItem}>
-              <svg>
-                <use href="/sprite.svg#tv"></use>
-              </svg>
-              <span>TV</span>
-            </li>
-            <li className={css.equipmentItem}>
-              <svg>
-                <use href="/sprite.svg#shower"></use>
-              </svg>
-              <span>Bathroom</span>
-            </li>
+            {categoryNames.map((filter) => {
+              const capitalize =
+                filter.charAt(0).toUpperCase() + filter.slice(1);
+              return (
+                <li
+                  onClick={() => appendFilters(filter)}
+                  key={filter}
+                  className={css.equipmentItem}
+                >
+                  <svg>
+                    <use href={`/sprite.svg#${filter}`}></use>
+                  </svg>
+                  <span>{capitalize}</span>
+                </li>
+              );
+            })}
           </ul>
         </fieldset>
       </div>
@@ -59,28 +67,24 @@ export default function Navbar() {
         <hr />
         <fieldset className={css.typeWrapper}>
           <ul className={css.equipmentList}>
-            <li className={css.equipmentItem}>
-              <svg>
-                <use href="/sprite.svg#grid3"></use>
-              </svg>
-              <span>Van</span>
-            </li>
-            <li className={css.equipmentItem}>
-              <svg>
-                <use href="/sprite.svg#grid2"></use>
-              </svg>
-              <span>Fully Integrated</span>
-            </li>
-            <li className={css.equipmentItem}>
-              <svg>
-                <use href="/sprite.svg#grid"></use>
-              </svg>
-              <span>Alcove</span>
-            </li>
+            {Object.entries(formMap).map(([label, value]) => (
+              <li
+                onClick={() => appendFilters(value)}
+                key={value}
+                className={css.equipmentItem}
+              >
+                <svg>
+                  <use href={`/sprite.svg#${value}`}></use>
+                </svg>
+                <span>{label}</span>
+              </li>
+            ))}
           </ul>
         </fieldset>
       </div>
-      <button className="button">Search</button>
+      <button onClick={() => selectFilters()} className="button">
+        Search
+      </button>
     </aside>
   );
 }

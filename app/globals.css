@@ -41,6 +41,7 @@ button {
   font-family: inherit;
   cursor: pointer;
   outline: none;
+  font-size: inherit;
 }
 
 fieldset {
@@ -73,7 +74,7 @@ input {
   line-height: 150%;
   font-weight: 500;
   border-radius: 200px;
-  padding: 16px 46px;
+  padding: 16px 40px;
   text-align: center;
   max-width: 173px;
 }

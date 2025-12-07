@@ -55,4 +55,19 @@ export interface CamperCard {
   };
 }
 
-export type Nullable<T> = T | null;
+export interface CategoriesFilters {
+  AC?: string;
+  kitchen?: string;
+  TV?: string;
+  bathroom?: string;
+  water?: string;
+  gas?: string;
+  radio?: string;
+}
+
+export interface CampersFilters {
+  categories?: string[];
+  location?: string;
+  transmission?: "automatic";
+  form?: "alcove" | "fullyIntegrated" | "panelTruck";
+}
