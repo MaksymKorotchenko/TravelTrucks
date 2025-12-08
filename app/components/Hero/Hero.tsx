@@ -1,5 +1,3 @@
-"use client";
-
 import css from "./Hero.module.css";
 import Link from "next/link";
 

@@ -5,6 +5,17 @@
   max-width: 360px;
 }
 
+.locationWrapper {
+  position: relative;
+  svg {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 15px;
+    top: 40px;
+  }
+}
+
 .locationLabel {
   line-height: 150%;
   color: var(--gray);
@@ -12,11 +23,15 @@
 
 .locationInput {
   border-radius: 12px;
-  padding: 18px 218px 18px 20px;
+  padding: 18px 20px 18px 48px;
   width: 360px;
   height: 56px;
   background: var(--inputs);
   font-size: 16px;
+  appearance: none;
+  outline: none;
+  border: none;
+  font-family: inherit;
 }
 
 .filtersText {

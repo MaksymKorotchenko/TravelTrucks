@@ -1,8 +1,10 @@
+import { Camper } from "@/types/camper";
 import css from "./Navbar.module.css";
 
 interface NavbarProps {
   selectFilters: () => void;
   appendFilters: (name: string) => void;
+  campers: Camper[];
 }
 
 export default function Navbar({ appendFilters, selectFilters }: NavbarProps) {
@@ -23,18 +25,32 @@ export default function Navbar({ appendFilters, selectFilters }: NavbarProps) {
     Alcove: "alcove",
   };
 
+  const locationMap = {
+    Kyiv: "Ukraine, Kyiv",
+    Poltava: "Ukraine, Poltava",
+    Dnipro: "Ukraine, Dnipro",
+    Odesa: "Ukraine, Odesa",
+    Kharkiv: "Ukraine, Kharkiv",
+    Sumy: "Ukraine, Sumy",
+    Lviv: "Ukraine, Lviv",
+  };
+
   return (
     <aside className={css.navbar}>
       <div className={css.locationWrapper}>
         <label className={css.locationLabel} htmlFor="location">
           Location
         </label>
-        <input
-          name="location"
-          id="location"
-          className={css.locationInput}
-          type="text"
-        />
+        <svg>
+          <use href="/sprite.svg#map"></use>
+        </svg>
+        <select name="location" id="location" className={css.locationInput}>
+          {Object.values(locationMap).map((location) => (
+            <option key={location} value={location}>
+              {location}
+            </option>
+          ))}
+        </select>
       </div>
       <span className={css.filtersText}>Filters</span>
       <div className={css.filtersWrapper}>

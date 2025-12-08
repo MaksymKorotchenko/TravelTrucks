@@ -39,6 +39,8 @@ export default function CampersList({
                   alt={`${camper.name} picture`}
                   width={292}
                   height={320}
+                  priority={true}
+                  loading="eager"
                 ></Image>
               </div>
               <div className={css.contentWrapper}>
@@ -58,7 +60,7 @@ export default function CampersList({
                     </svg>
                     <Link
                       className={css.ratingLink}
-                      href={`/campers/${camper.id}`}
+                      href={`/catalog/${camper.id}`}
                     >{`${camper.rating}(${camper.reviews.length} Reviews)`}</Link>
                   </div>
                   <div className={css.locationWrapper}>

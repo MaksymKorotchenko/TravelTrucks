@@ -5,72 +5,67 @@ import Image from "next/image";
 
 interface CamperInfoProps {
   camper: Camper | undefined;
+  isFeaturesActive: boolean;
+  toogleButton: () => void;
 }
-
-export default function CamperInfo({ camper }: CamperInfoProps) {
-  const iconsMap: Record<string, string> = {
-    AC: "AC",
-    bathroom: "bathroom",
-    kitchen: "kitchen",
-    TV: "TV",
-    radio: "radio",
-    refrigerator: "fridge",
-    microwave: "microwave",
-    gas: "gas",
-    water: "water",
-  };
+export default function CamperInfo({
+  camper,
+  isFeaturesActive,
+  toogleButton,
+}: CamperInfoProps) {
   return (
     <>
-      <div className={css.nameWrapper}>
-        <h2 className={css.title}>{camper?.name}</h2>
-        <div>
-          <Link
-            className={css.ratingLink}
-            href={`/campers/${camper?.id}`}
-          >{`${camper?.rating}(${camper?.reviews.length} Reviews)`}</Link>
-          <svg>
-            <use href="/sprite.svg#star"></use>
-          </svg>
+      <section className={css.cardWrapper}>
+        <div className={css.nameWrapper}>
+          <h1 className={css.title}>{camper?.name}</h1>
+          <div className={css.ratingWrapper}>
+            <div>
+              <svg>
+                <use href="/sprite.svg#star"></use>
+              </svg>
+              <Link
+                className={css.ratingLink}
+                href={`/catalog/${camper?.id}`}
+              >{`${camper?.rating}(${camper?.reviews.length} Reviews)`}</Link>
+            </div>
+            <div className={css.locationWrapper}>
+              <svg>
+                <use href="/sprite.svg#map"></use>
+              </svg>
+              <span className={css.location}>{camper?.location}</span>
+            </div>
+          </div>
+          <span className={css.price}>{`€${camper?.price}.00`}</span>
         </div>
-        <div className={css.locationWrapper}>
-          <svg>
-            <use href="/sprite.svg#map"></use>
-          </svg>
-          <span>{camper?.location}</span>
+        <div className={css.imageWrapper}>
+          {camper?.gallery.map((img) => (
+            <Image
+              className={css.image}
+              key={img.original}
+              src={img.original}
+              alt={`${img.original} picture`}
+              width={292}
+              height={320}
+              priority={true}
+              loading="eager"
+            ></Image>
+          ))}
         </div>
-        <span className={css.price}>{`€${camper?.price}.00`}</span>
-      </div>
-      {camper?.gallery.map((img) => (
-        <Image
-          key={img.original}
-          src={img.original}
-          alt={`${img.original} picture`}
-          width={292}
-          height={320}
-        ></Image>
-      ))}
-      <p>{camper?.description}</p>
-      <button>Features</button>
-      <button>Reviews</button>
-      <div>
-        <ul className={css.categoryList}>
-          {/* {camper.
-            ?.filter(([, value]) => value === true)
-            ?.map(([key]) => {
-              const capitalize = key.charAt(0).toUpperCase() + key.slice(1);
-              const iconId = iconsMap[key];
-              if (!iconId) return null;
-              return (
-                <li className={css.categoryItem} key={key}>
-                  <svg>
-                    <use href={`/sprite.svg#${iconId}`} />
-                  </svg>
-                  <span>{capitalize}</span>
-                </li>
-              );
-            })}
-          ; */}
-        </ul>
+        <p className={css.description}>{camper?.description}</p>
+      </section>
+      <div className={`${css.navWrapper}`}>
+        <button
+          onClick={toogleButton}
+          className={`${css.navBtn} ${isFeaturesActive ? css.featuresBtn : ""}`}
+        >
+          Features
+        </button>
+        <button
+          onClick={toogleButton}
+          className={`${css.navBtn} ${isFeaturesActive ? "" : css.reviewsBtn}`}
+        >
+          Reviews
+        </button>
       </div>
     </>
   );

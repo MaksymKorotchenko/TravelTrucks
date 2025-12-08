@@ -4,7 +4,7 @@ import { getCampers } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import Navbar from "../components/Navbar/Navbar";
 import css from "./Catalog.module.css";
-import CampersList from "../components/CampersItem/CampersList";
+import CampersList from "../components/CampersList/CampersList";
 import { useCampersStore } from "@/lib/store/campersStore";
 import { useEffect, useState } from "react";
 import { CampersFilters } from "@/types/camper";
@@ -48,13 +48,11 @@ export default function Catalog() {
     else appendCampers(data.items);
   }, [data, page, setCampers, appendCampers]);
 
-  console.log(selectedFilters);
-  console.log(filters);
-
   return (
-    <section className={`container ${css.container}`}>
+    <div className={`container ${css.container}`}>
       <main className={css.main}>
         <Navbar
+          campers={campers}
           selectFilters={handleApplyFilters}
           appendFilters={handleToggleCategory}
         ></Navbar>
@@ -64,6 +62,6 @@ export default function Catalog() {
           isAllLoaded={campers.length < (data?.total ?? 0)}
         ></CampersList>
       </main>
-    </section>
+    </div>
   );
 }

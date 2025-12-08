@@ -1,0 +1,9 @@
+.mainWrapper {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.detailsWrapper {
+  display: flex;
+  gap: 40px;
+}
